@@ -96,16 +96,3 @@ text-align: left;
 #mapa{
     padding-right: 310px;
 }
-
-#snake_cola{
-    transform: rotate(90deg);
-    margin-top: -200px;
-    margin-right: 420px;
-    z-index: -1;
-}
-#snake_cuerpo{
-    transform: rotate(90deg);
-    margin-top: -400px;
-    margin-left: 470px;
-    z-index: -1;
-}
