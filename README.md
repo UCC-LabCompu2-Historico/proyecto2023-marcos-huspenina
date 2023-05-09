@@ -4,12 +4,12 @@ El proyecto presentado en laboratorio de computación 2, consiste en una página
 ## Acerca de la pagina :smile:
 Por el momento el proyecto solo presenta la estructura principal de la página. La parte funcional del juego en si todavia se encuentra en desarrollo. 
 
-:pushpin: Haz Click en este link para acceder a la página. 
+:pushpin: Haz Click en este [link](https://ucc-labcompu2.github.io/proyecto2023-marcos-huspenina/Proyecto/index.html) para acceder a la página. 
 
 ## Tecnologia usada :computer:
-- [] HTML
-- [] CSS
-- [] Javascript
+-  HTML
+-  CSS
+-  Javascript
 
 ## Autores :fountain_pen:
 - Joaquin Marcos Vergara
