@@ -15,46 +15,49 @@
 </head>
 
 <body class="principal">
-    
     <header>
+        <a href="https://www.ucc.edu.ar/">
+        <img src="imagenes/UCC.png" id="ucc" alt="Logo de la universidad">
+        </a>
         <h1>Snake Game</h1>
     </header>
+        
+    <main>
+            <br>
+                <div class="nombre">
+                    <label for="nombre_user">NOMBRE DE USUARIO:</label>
+                    <input type="nombre" id="nombre_user" placeholder=" Ingrese su nombre ">
+                </div>
+            </br>
+        <div>
+            <nav>
+                <a href="juego.html">
+                <button id="jugar">
+                    <h2>Jugar</h2>
+                </button>
+                </a>
+            </nav>
 
-    <!--<div>
-        <img src="imagenes/snake_cola.png" id="snake_cola">
-        <img src="imagenes/snake_cuerpo.png" id="snake_cuerpo">-->
-    </div>
-        <p>
-            <div class="nombre">
-            NOMBRE DE USUARIO: <input type="nombre" id="cuadro_texto" placeholder="  Ingrese su nombre ">
-            </div>
-        </p>
-    <div>
-        <nav>
-            <a href="juego.html">
-            <button id="jugar"><h2>Jugar</h2></button>
-            </a>
-        </nav>
+            <button id="reglas" onclick="window.texto.showModal();">
+                Reglas
+            </button>
 
-        <button id="reglas" onclick="window.texto.showModal();">Reglas</button>
-        <dialog id="texto">
-            <p>
-                <h4>¡CUIDADO!</h4>
-            </p>
-            <ol id="lista">
-                <li>No te golpees contra una pared</li>
-                <li>No te muerdas la cola</li>
-                <li>Come la mayor cantidad de cerezas!</li>
-            </ol>
-        <button id="volver" onclick="window.texto.close();"> Cerrar </button>
-        </dialog>
-    </div>
-    <audio autoplay loop>
-        <source src="audio/musica.mp3" type="audio/mpeg">
-        Tu navegador no soporta la reproducción de audio.
-      </audio>
+            <dialog id="texto">
+                <p>
+                    <h4>¡CUIDADO!</h4>
+                </p>
+                <ol id="lista">
+                    <li>No te golpees contra una pared</li>
+                    <li>No te muerdas la cola</li>
+                    <li>Come la mayor cantidad de cerezas!</li>
+                </ol>
+
+            <button id="volver" onclick="window.texto.close();">Cerrar</button>
+            </dialog>
+        </div>
+    </main>
+    <footer>
+        <p>Autores: Joaquin Marcos Vergara - Tomas Huspenina</p>
+    </footer>
 </body>
-<footer>
-
-</footer>
 </html>
