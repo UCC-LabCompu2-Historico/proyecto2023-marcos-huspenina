@@ -38,8 +38,7 @@ function Principal(){
     GenerarComida(); 
     document.addEventListener("keyup", CambioDireccion);
     document.addEventListener("keydown", PaginaEstatica); 
-    //Juego(); 
-    setInterval(Juego, 1000/10);
+    setInterval(Juego, 100);
 }
 
 
@@ -52,7 +51,7 @@ let GuardarNombre = () =>{
 }
 
  /**
- * Descripción: realiza lo esencial del juego, creacion de la viborita, comida, condiciones de puntaje, finalizacion del mismo, etc.  
+ * Descripción: Realiza lo esencial del juego, creacion de la viborita, comida, condiciones de puntaje, finalizacion del mismo, etc.  
  * @method Juego
  */
 let Juego = () =>{
@@ -121,7 +120,7 @@ let GenerarComida = () =>{
  /**
  * Descripción: Realiza el cambio de direccion de la viborita cuando el usuario presiona una flecha del teclado. 
  * @method CambioDireccion
-* @param {KeyboardEvent} tecla - flecha presionada por el usuario
+* @param {KeyboardEvent} tecla - flecha presionada por el usuario.
  */
 let CambioDireccion = (tecla) =>{
     if (tecla.code == "ArrowUp" && velocidadY != 1) {
