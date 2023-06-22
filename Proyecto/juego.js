@@ -11,7 +11,7 @@ var cabezaY = bloque * 10;
 
 var velocidadX = 0; 
 var velocidadY = 0;
-
+var velocidad = 100; 
 var cuerpo = []; 
 
 //comida
@@ -20,10 +20,18 @@ var comidaY;
 
 //demas
 var puntos = 0; 
+var nivel = 1; 
+var contador = 0; 
+let intervalo; 
 var nombre; 
 var Perder = false; 
 
 window.onload = Principal; 
+
+
+
+
+
  /**
  * Descripción: Crea el canvas y utiliza las demas funciones para llevar a cabo el juego.  
  * @method Principal
@@ -38,8 +46,10 @@ function Principal(){
     GenerarComida(); 
     document.addEventListener("keyup", CambioDireccion);
     document.addEventListener("keydown", PaginaEstatica); 
-    setInterval(Juego, 100);
+    intervalo = setInterval(Juego, velocidad);
 }
+
+
 
 
  /**
@@ -50,12 +60,27 @@ let GuardarNombre = () =>{
     nombre = document.getElementById("nombre_user").value; 
 }
 
+
+
+let AumentoNivel = (puntos) =>{
+    var aux = 100; 
+    document.getElementById("nivel").textContent = nivel;
+    if(puntos === contador+3){
+        nivel++; 
+        aux = aux-50;
+        contador = puntos; 
+   }
+   return aux; 
+}
+
+
+
  /**
  * Descripción: Realiza lo esencial del juego, creacion de la viborita, comida, condiciones de puntaje, finalizacion del mismo, etc.  
  * @method Juego
  */
 let Juego = () =>{
-    
+
     if(Perder){
         return; 
     }
@@ -73,9 +98,10 @@ let Juego = () =>{
         GenerarComida();
     }
 
-    //puntos
+    //puntos y nivel
     document.getElementById("puntos").textContent = puntos;
-
+    //document.getElementById("nivel").textContent = nivel;
+    
     //verificacion para el movimiento
     for (let i=cuerpo.length-1; i>0; i--) {
         cuerpo[i] = cuerpo[i-1];
@@ -106,6 +132,10 @@ let Juego = () =>{
             window.location.reload();
         }
     }
+    
+    velocidad = AumentoNivel(puntos);
+    clearInterval(intervalo); 
+    intervalo = setInterval(Juego, velocidad);
 }
 
  /**
@@ -116,6 +146,9 @@ let GenerarComida = () =>{
     comidaX = Math.floor(Math.random() * columnas) * bloque; 
     comidaY = Math.floor(Math.random() * filas) * bloque; 
 }
+
+
+
 
  /**
  * Descripción: Realiza el cambio de direccion de la viborita cuando el usuario presiona una flecha del teclado. 
@@ -140,6 +173,8 @@ let CambioDireccion = (tecla) =>{
         velocidadY = 0;
     }
 }
+
+
 
  /**
  * Descripción: Hace que la pagina no se mueva cuando el usuario presiona una tecla.  

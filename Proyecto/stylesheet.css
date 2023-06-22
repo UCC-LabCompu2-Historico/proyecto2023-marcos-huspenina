@@ -144,6 +144,11 @@ footer{
     transform: scale(1.1);
   }
 
+.espacio{
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
 #mapa{
     padding-right: 310px;
 }
