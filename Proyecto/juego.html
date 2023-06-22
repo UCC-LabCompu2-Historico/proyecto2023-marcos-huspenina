@@ -22,7 +22,37 @@
         <input type="nombre" id="nombre_user" placeholder=" Ingrese su nombre ">
         <button id="guardar" onclick="GuardarNombre()">Guardar</button>
     </div>
-     
+
+    <div class="SeleccionarColor">
+        <label>COLOR DE LA VIBORITA:</label>
+        <!--<button id="guardar" onclick="window.texto.showModal();">Seleccionar Color</button>
+        <dialog id="texto">
+            <p>
+                <h4>Seleccione un color: </h4>
+            </p>-->
+            
+            <select id="seleccion">
+                <option id="opcion" value="1">1. VERDE</option>
+                <option id="opcion" value="2">2. ROJO</option>
+                <option id="opcion" value="3">3. AZUL</option>
+                <option id="opcion" value="4">1. AMARILLO</option>
+                <option id="opcion" value="5">2. ROSA</option>
+            </select>
+
+            <!--<ol id="lista">
+                <li>
+                    <button id="color" onclick="window.texto.close();">Azul</button>
+                </li>
+                <li>
+                    <button id="color" onclick="window.texto.close();">Verde</button>
+                </li>
+                <li>
+                    <button id="color" onclick="window.texto.close();">Rojo</button>
+                </li>
+            </ol>-->
+        </dialog>
+    </div>
+
     <h3>
         Puntuacion: 
         <span id="puntos">0</span>

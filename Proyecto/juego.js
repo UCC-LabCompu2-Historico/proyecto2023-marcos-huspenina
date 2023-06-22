@@ -22,13 +22,12 @@ var comidaY;
 var puntos = 0; 
 var nivel = 1; 
 var contador = 0; 
+var contador2 = 0; 
 let intervalo; 
 var nombre; 
 var Perder = false; 
 
-window.onload = Principal; 
-
-
+window.onload = Principal;
 
 
 
@@ -45,11 +44,9 @@ function Principal(){
  
     GenerarComida(); 
     document.addEventListener("keyup", CambioDireccion);
-    document.addEventListener("keydown", PaginaEstatica); 
+    document.addEventListener("keydown", PaginaEstatica);
     intervalo = setInterval(Juego, velocidad);
 }
-
-
 
 
  /**
@@ -61,18 +58,18 @@ let GuardarNombre = () =>{
 }
 
 
-
 let AumentoNivel = (puntos) =>{
-    var aux = 100; 
+    //var aux = 100; 
     document.getElementById("nivel").textContent = nivel;
     if(puntos === contador+3){
         nivel++; 
-        aux = aux-50;
+        velocidad = velocidad-50;
         contador = puntos; 
+        //clearInterval(intervalo); 
+        intervalo = setInteval(Juego, velocidad); 
    }
-   return aux; 
-}
 
+}
 
 
  /**
@@ -98,9 +95,9 @@ let Juego = () =>{
         GenerarComida();
     }
 
-    //puntos y nivel
+
+    //puntos
     document.getElementById("puntos").textContent = puntos;
-    //document.getElementById("nivel").textContent = nivel;
     
     //verificacion para el movimiento
     for (let i=cuerpo.length-1; i>0; i--) {
@@ -133,10 +130,10 @@ let Juego = () =>{
         }
     }
     
-    velocidad = AumentoNivel(puntos);
-    clearInterval(intervalo); 
-    intervalo = setInterval(Juego, velocidad);
+    AumentoNivel(puntos);
 }
+
+
 
  /**
  * Descripción: Genera las coordenadas de la comida de manera aleatoria 

@@ -27,7 +27,7 @@ h3{
 }
 
 h4{
-    font-size: 2em;
+    font-size: 1em;
 }
 
 #ucc{
@@ -147,6 +147,34 @@ footer{
 .espacio{
     margin-left: 150px;
     margin-right: 150px;
+}
+
+.SeleccionarColor{
+    font-size: 1.6em;
+    font-weight: bolder;
+    color: rgb(0, 0, 0);
+    text-shadow:1px 3px rgb(255, 255, 255);
+    margin-top: 30px;
+    margin-left: 24px;
+}
+
+#seleccion{
+    font-family: 'DynaPuff', cursive;
+    font-weight: bolder;
+    font-size: 0.8em;
+    margin-left: 5px;
+    text-align: center;
+}
+
+#color{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20%;
+    border-width: 5px;
+    border-color: rgb(47, 78, 39);
+    font-family: 'DynaPuff', cursive;
 }
 
 #mapa{
