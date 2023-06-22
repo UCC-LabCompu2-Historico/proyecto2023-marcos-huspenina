@@ -148,27 +148,25 @@ let GenerarComida = () =>{
 }
 
 
-
-
  /**
  * Descripción: Realiza el cambio de direccion de la viborita cuando el usuario presiona una flecha del teclado. 
  * @method CambioDireccion
 * @param {KeyboardEvent} tecla - flecha presionada por el usuario.
  */
 let CambioDireccion = (tecla) =>{
-    if (tecla.code == "ArrowUp" && velocidadY != 1) {
+    if ((tecla.code == "ArrowUp" || tecla.code == "KeyW") && velocidadY != 1) {
         velocidadX = 0;
         velocidadY = -1;
     }
-    else if (tecla.code == "ArrowDown" && velocidadY != -1) {
+    else if ((tecla.code == "ArrowDown" || tecla.code == "KeyS") && velocidadY != -1) {
         velocidadX = 0;
         velocidadY = 1;
     }
-    else if (tecla.code == "ArrowLeft" && velocidadX != 1) {
+    else if ((tecla.code == "ArrowLeft" || tecla.code == "KeyA") && velocidadX != 1) {
         velocidadX = -1;
         velocidadY = 0;
     }
-    else if (tecla.code == "ArrowRight" && velocidadX != -1) {
+    else if ((tecla.code == "ArrowRight" || tecla.code == "KeyD") && velocidadX != -1) {
         velocidadX = 1;
         velocidadY = 0;
     }
