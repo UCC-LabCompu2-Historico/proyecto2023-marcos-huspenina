@@ -26,16 +26,13 @@ var contador2 = 0;
 let intervalo; 
 var nombre; 
 var Perder = false; 
-
-window.onload = Principal;
-
-
+var mensaje; 
 
  /**
  * Descripción: Crea el canvas y utiliza las demas funciones para llevar a cabo el juego.  
  * @method Principal
  */
-function Principal(){
+let Principal= () =>{
     //creando el tablero
     tablero = document.getElementById("tablero"); 
     tablero.height = filas * bloque; 
@@ -49,6 +46,11 @@ function Principal(){
     intervalo = setInterval(Juego, velocidad);
 }
 
+let BorrarTexto = () =>{
+    mensaje = document.getElementById("mensaje"); 
+    mensaje.innerText = "";  
+}
+
 
  /**
  * Descripción: Guarda el nombre ingresado por el usuario. 
@@ -56,6 +58,17 @@ function Principal(){
  */
 let GuardarNombre = () =>{
     nombre = document.getElementById("nombre_user").value; 
+
+    
+    if(nombre.trim()=== ""){
+        alert("ADVERTENCIA: Debe ingresar su nombre de usuario");
+        window.location.reload();
+    }
+
+    if(nombre.length>20){
+        alert("ADVERTENCIA: Nombre de usuario muy extenso.\n Recuerde que tiene como maximo 20 caracteres");
+        window.location.reload();
+    }
 }
 
 
@@ -65,6 +78,7 @@ let AumentoNivel = (puntos) =>{
         nivel++; 
         velocidad = velocidad-15;
         contador = puntos; 
+        clearInterval(intervalo); 
         intervalo = setInterval(Juego, velocidad); 
    }
 

@@ -20,7 +20,7 @@
     <div class="nombre">
         <label for="nombre_user">NOMBRE DE USUARIO:</label>
         <input type="nombre" id="nombre_user" placeholder=" Ingrese su nombre ">
-        <button id="guardar" onclick="GuardarNombre()">Guardar</button>
+        <button id="guardar" onclick="Principal(), GuardarNombre(), BorrarTexto()">Guardar</button>
     </div>
 
     <div class="SeleccionarColor">
@@ -42,6 +42,10 @@
 
         Nivel: 
         <span id="nivel">1</span>
+    </h3>
+
+    <h3>
+        <span id="mensaje"><br>-- PARA JUGAR COLOQUE SU NOMBRE DE USUARIO --</span>
     </h3>
     <canvas id="tablero"></canvas>
 </body>
