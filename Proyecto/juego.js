@@ -8,11 +8,11 @@ var ctx;
 //viborita
 var cabezaX = bloque * 10; 
 var cabezaY = bloque * 10; 
-
 var velocidadX = 0; 
 var velocidadY = 0;
 var velocidad = 100; 
 var cuerpo = []; 
+var seleccion; 
 
 //comida
 var comidaX;  
@@ -43,6 +43,7 @@ function Principal(){
     ctx =  tablero.getContext("2d"); 
  
     GenerarComida(); 
+    //CustomViborita(); 
     document.addEventListener("keyup", CambioDireccion);
     document.addEventListener("keydown", PaginaEstatica);
     intervalo = setInterval(Juego, velocidad);
@@ -58,19 +59,40 @@ let GuardarNombre = () =>{
 }
 
 
-let AumentoNivel = (puntos) =>{
-    //var aux = 100; 
+let AumentoNivel = (puntos) =>{ 
     document.getElementById("nivel").textContent = nivel;
     if(puntos === contador+3){
         nivel++; 
-        velocidad = velocidad-50;
+        velocidad = velocidad-15;
         contador = puntos; 
-        //clearInterval(intervalo); 
-        intervalo = setInteval(Juego, velocidad); 
+        intervalo = setInterval(Juego, velocidad); 
    }
 
 }
 
+let CustomViborita = () => {
+    seleccion = document.getElementById("seleccion").value;
+    switch (seleccion) {
+      case "1":
+        ctx.fillStyle = "green";
+        break;
+      case "2":
+        ctx.fillStyle = "red";
+        break;
+      case "3":
+        ctx.fillStyle = "blue";
+        break;
+      case "4":
+        ctx.fillStyle = "yellow";
+        break;
+      case "5":
+        ctx.fillStyle = "pink";
+        break;
+      default:
+        ctx.fillStyle = "green";
+        break;
+    }
+  }
 
  /**
  * Descripción: Realiza lo esencial del juego, creacion de la viborita, comida, condiciones de puntaje, finalizacion del mismo, etc.  
@@ -108,7 +130,8 @@ let Juego = () =>{
     }
 
     //estilo viborita
-    ctx.fillStyle = "green";
+    CustomViborita();
+
     cabezaX = cabezaX + (velocidadX * bloque); 
     cabezaY += velocidadY * bloque; 
     ctx.fillRect(cabezaX, cabezaY, bloque, bloque);  
