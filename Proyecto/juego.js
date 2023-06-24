@@ -30,6 +30,7 @@ var mensaje;
 let dialog; 
 var MostrarPuntaje; 
 var MostrarNivel; 
+var bandera = false; 
 
  /**
  * Descripción: Crea el canvas y utiliza las demas funciones para llevar a cabo el juego.  
@@ -43,7 +44,6 @@ let Principal= () =>{
     ctx =  tablero.getContext("2d"); 
  
     GenerarComida(); 
-    //CustomViborita(); 
     document.addEventListener("keyup", CambioDireccion);
     document.addEventListener("keydown", PaginaEstatica);
     intervalo = setInterval(Juego, velocidad);
@@ -225,10 +225,32 @@ let PaginaEstatica = (evento) =>{
 
 let MostrarDialogo = () =>{
     dialog = document.getElementById("MensajePerder");
+    document.getElementById("MostrarNombre").innerHTML = nombre + " HAS PERDIDO";
     document.getElementById("MostrarPuntaje").innerHTML = "Puntaje: "+ puntos;
     document.getElementById("MostrarNivel").innerHTML = "Nivel: "+ nivel; 
     dialog.showModal();
-    dialog.addEventListener("close", function () {
-        Principal();
-    });
 }
+
+let Restart = () => {
+    cabezaX = bloque * 10;
+    cabezaY = bloque * 10;
+    velocidadX = 0;
+    velocidadY = 0;
+    puntos = 0;
+    contador = 0;
+    contador2 = 0;
+    Perder = false;
+    cuerpo = []; 
+    clearInterval(intervalo);
+    velocidad = 100;
+    nivel = 1;
+};
+
+let CerrarDialog = () =>{
+    dialog = document.getElementById("MensajePerder");
+    dialog.close(); 
+    Restart(); 
+    Principal(); 
+}
+
+

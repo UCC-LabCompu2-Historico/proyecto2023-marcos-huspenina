@@ -20,7 +20,7 @@
     <div class="nombre">
         <label for="nombre_user">NOMBRE DE USUARIO:</label>
         <input type="nombre" id="nombre_user" placeholder=" Ingrese su nombre ">
-        <button id="guardar" onclick="Principal(), GuardarNombre(), BorrarTexto()">Guardar</button>
+        <button id="guardar" onclick="GuardarNombre(), Principal(), BorrarTexto()">Guardar</button>
     </div>
 
     <div class="SeleccionarColor">
@@ -58,13 +58,12 @@
 
     <div id="Dialog">
         <dialog id="MensajePerder">
-            <h2>HAS PERDIDO</h2>
+            <h2 id="MostrarNombre">HAS PERDIDO</h2>
             <p id="MostrarPuntaje">Puntaje:</p>
             <p id="MostrarNivel">Nivel:</p>
-            <button id="guardar" onclick="window.location.reload(), window.MensajePerder.close();">Cerrar</button>
+            <button id="guardar" onclick="CerrarDialog()">Cerrar</button>
         </dialog>
     </div>
-
     <canvas id="tablero"></canvas>
 </body>
 </html>
