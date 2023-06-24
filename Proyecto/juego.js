@@ -26,7 +26,10 @@ var contador2 = 0;
 let intervalo; 
 var nombre; 
 var Perder = false; 
-var mensaje; 
+var mensaje;
+let dialog; 
+var MostrarPuntaje; 
+var MostrarNivel; 
 
  /**
  * Descripción: Crea el canvas y utiliza las demas funciones para llevar a cabo el juego.  
@@ -156,14 +159,16 @@ let Juego = () =>{
     //condiciones para perder
     if (cabezaX < 0 || cabezaX > columnas*bloque-1 || cabezaY < 0 || cabezaY > filas*bloque-1) {
         Perder = true;
-        alert("FIN DEL JUEGO: "+ nombre + " HAS PERDIDO \nPUNTUACION FINAL: "+ puntos);
-        window.location.reload();
+        MostrarDialogo();
+        //window.location.reload();
+        return Perder;
     }
     for (let i = 0; i < cuerpo.length; i++) {
         if (cabezaX == cuerpo[i][0] && cabezaY == cuerpo[i][1]) {
             Perder = true;
-            alert("FIN DEL JUEGO: "+ nombre + " HAS PERDIDO \nPUNTUACION FINAL: "+ puntos);
-            window.location.reload();
+            MostrarDialogo();
+            //window.location.reload();
+            return Perder;
         }
     }
     
@@ -207,7 +212,6 @@ let CambioDireccion = (tecla) =>{
 }
 
 
-
  /**
  * Descripción: Hace que la pagina no se mueva cuando el usuario presiona una tecla.  
  * @method PaginaEstatica
@@ -217,4 +221,14 @@ let PaginaEstatica = (evento) =>{
         if (evento.key.startsWith("Arrow")){
             evento.preventDefault();
         }
+}
+
+let MostrarDialogo = () =>{
+    dialog = document.getElementById("MensajePerder");
+    document.getElementById("MostrarPuntaje").innerHTML = "Puntaje: "+ puntos;
+    document.getElementById("MostrarNivel").innerHTML = "Nivel: "+ nivel; 
+    dialog.showModal();
+    dialog.addEventListener("close", function () {
+        Principal();
+    });
 }

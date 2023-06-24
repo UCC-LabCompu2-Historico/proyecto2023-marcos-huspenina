@@ -44,9 +44,27 @@
         <span id="nivel">1</span>
     </h3>
 
-    <h3>
-        <span id="mensaje"><br>-- PARA JUGAR COLOQUE SU NOMBRE DE USUARIO --</span>
-    </h3>
+    <div id="mensaje">
+        <button id="volver" onclick="window.advertencia.showModal();">
+            ADVERTENCIA
+        </button>
+        <dialog id="advertencia">
+            <p>
+                <h4>-- PARA JUGAR COLOQUE SU NOMBRE DE USUARIO --</h4>
+            </p>
+            <button id="guardar" onclick="window.advertencia.close();">Cerrar</button>
+        </dialog>
+    </div>
+
+    <div id="Dialog">
+        <dialog id="MensajePerder">
+            <h2>HAS PERDIDO</h2>
+            <p id="MostrarPuntaje">Puntaje:</p>
+            <p id="MostrarNivel">Nivel:</p>
+            <button id="guardar" onclick="window.location.reload(), window.MensajePerder.close();">Cerrar</button>
+        </dialog>
+    </div>
+
     <canvas id="tablero"></canvas>
 </body>
 </html>
