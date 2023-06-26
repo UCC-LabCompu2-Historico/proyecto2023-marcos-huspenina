@@ -12,16 +12,16 @@
     <title>Snake Game</title>
 </head>
 
-<body class="juego">  
+<body class="juego" onload="Principal()">  
     <a href="index.html">
         <button id="volver">Volver</button>
     </a>
 
-    <div class="nombre">
+    <!--<div class="nombre">
         <label for="nombre_user">NOMBRE DE USUARIO:</label>
         <input type="nombre" id="nombre_user" placeholder=" Ingrese su nombre ">
         <button id="guardar" onclick="GuardarNombre(), Principal(), BorrarTexto()">Guardar</button>
-    </div>
+    </div>-->
 
     <div class="SeleccionarColor">
         <label>COLOR DE LA VIBORITA:</label>      
@@ -44,7 +44,7 @@
         <span id="nivel">1</span>
     </h3>
 
-    <div id="mensaje">
+    <!--<div id="mensaje">
         <button id="volver" onclick="window.advertencia.showModal();">
             ADVERTENCIA
         </button>
@@ -54,7 +54,7 @@
             </p>
             <button id="guardar" onclick="window.advertencia.close();">Cerrar</button>
         </dialog>
-    </div>
+    </div>-->
 
     <div id="Dialog">
         <dialog id="MensajePerder">

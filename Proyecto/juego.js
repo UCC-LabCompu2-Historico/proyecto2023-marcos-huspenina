@@ -24,19 +24,25 @@ var nivel = 1;
 var contador = 0; 
 var contador2 = 0; 
 let intervalo; 
-var nombre; 
+var nombre;
+var nombreUsu;
 var Perder = false; 
 var mensaje;
-let dialog; 
+let dialog;
+let dialog2;  
 var MostrarPuntaje; 
 var MostrarNivel; 
 var bandera = false; 
+
+
+
+//window.onload = Principal; 
 
  /**
  * Descripción: Crea el canvas y utiliza las demas funciones para llevar a cabo el juego.  
  * @method Principal
  */
-let Principal= () =>{
+function Principal(){
     //creando el tablero
     tablero = document.getElementById("tablero"); 
     tablero.height = filas * bloque; 
@@ -59,20 +65,24 @@ let BorrarTexto = () =>{
  * Descripción: Guarda el nombre ingresado por el usuario. 
  * @method GuardarNombre
  */
-let GuardarNombre = () =>{
-    nombre = document.getElementById("nombre_user").value; 
-
-    
-    if(nombre.trim()=== ""){
-        alert("ADVERTENCIA: Debe ingresar su nombre de usuario");
-        window.location.reload();
+ let GuardarNombre = () => {
+    nombreUsu = document.getElementById("nombre_user").value;
+    localStorage.setItem("NombreDelUsuario",nombreUsu);
+  
+    nombre = localStorage.getItem("NombreDelUsuario");
+  
+    if (nombre.trim() === "") {
+      alert("ADVERTENCIA: Debe ingresar su nombre de usuario");
+      return;
+    }
+  
+    if (nombre.length > 20) {
+      alert("ADVERTENCIA: Nombre de usuario muy extenso. Recuerde que tiene como máximo 20 caracteres");
+      return;
     }
 
-    if(nombre.length>20){
-        alert("ADVERTENCIA: Nombre de usuario muy extenso.\n Recuerde que tiene como maximo 20 caracteres");
-        window.location.reload();
-    }
-}
+    window.location.href = "juego.html";
+  };
 
 
 let AumentoNivel = (puntos) =>{ 
@@ -159,19 +169,16 @@ let Juego = () =>{
     //condiciones para perder
     if (cabezaX < 0 || cabezaX > columnas*bloque-1 || cabezaY < 0 || cabezaY > filas*bloque-1) {
         Perder = true;
-        MostrarDialogo();
-        //window.location.reload();
+        MostrarDialog();
         return Perder;
     }
     for (let i = 0; i < cuerpo.length; i++) {
         if (cabezaX == cuerpo[i][0] && cabezaY == cuerpo[i][1]) {
             Perder = true;
-            MostrarDialogo();
-            //window.location.reload();
+            MostrarDialog();
             return Perder;
         }
     }
-    
     AumentoNivel(puntos);
 }
 
@@ -223,7 +230,8 @@ let PaginaEstatica = (evento) =>{
         }
 }
 
-let MostrarDialogo = () =>{
+let MostrarDialog = () =>{
+    nombre = localStorage.getItem("NombreDelUsuario");
     dialog = document.getElementById("MensajePerder");
     document.getElementById("MostrarNombre").innerHTML = nombre + " HAS PERDIDO";
     document.getElementById("MostrarPuntaje").innerHTML = "Puntaje: "+ puntos;
@@ -253,4 +261,7 @@ let CerrarDialog = () =>{
     Principal(); 
 }
 
-
+let MostrarDialog_2 = () =>{
+    dialog2 = document.getElementById("nombre");
+    dialog2.showModal();
+}
