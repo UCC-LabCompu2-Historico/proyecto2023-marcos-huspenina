@@ -178,9 +178,15 @@ footer{
     font-family: 'DynaPuff', cursive;
 }
 
-#mapa{
-    padding-right: 310px;
+.Tabla_Puntaje{
+    margin: auto;
+    font-size: 2em;
+    font-weight: bolder;
+    color: rgb(0, 0, 0);
+    text-shadow:1px 3px rgb(255, 255, 255);
 }
+
+
 
 
 

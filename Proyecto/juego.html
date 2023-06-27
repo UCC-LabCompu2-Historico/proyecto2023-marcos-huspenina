@@ -13,15 +13,10 @@
 </head>
 
 <body class="juego" onload="Principal()">  
+
     <a href="index.html">
         <button id="volver">Volver</button>
     </a>
-
-    <!--<div class="nombre">
-        <label for="nombre_user">NOMBRE DE USUARIO:</label>
-        <input type="nombre" id="nombre_user" placeholder=" Ingrese su nombre ">
-        <button id="guardar" onclick="GuardarNombre(), Principal(), BorrarTexto()">Guardar</button>
-    </div>-->
 
     <div class="SeleccionarColor">
         <label>COLOR DE LA VIBORITA:</label>      
@@ -35,7 +30,7 @@
     </div>
 
     <h3>
-        Puntuacion: 
+        Puntuacion:
         <span id="puntos">0</span>
 
         <span class="espacio"></span>
@@ -43,18 +38,6 @@
         Nivel: 
         <span id="nivel">1</span>
     </h3>
-
-    <!--<div id="mensaje">
-        <button id="volver" onclick="window.advertencia.showModal();">
-            ADVERTENCIA
-        </button>
-        <dialog id="advertencia">
-            <p>
-                <h4>-- PARA JUGAR COLOQUE SU NOMBRE DE USUARIO --</h4>
-            </p>
-            <button id="guardar" onclick="window.advertencia.close();">Cerrar</button>
-        </dialog>
-    </div>-->
 
     <div id="Dialog">
         <dialog id="MensajePerder">
@@ -64,6 +47,78 @@
             <button id="guardar" onclick="CerrarDialog()">Cerrar</button>
         </dialog>
     </div>
+
     <canvas id="tablero"></canvas>
+
+
+    <table class="Tabla_Puntaje">
+       <tr>
+            <th><strong>POSICION</strong></th>
+            <th><strong>NOMBRE</strong></th>
+            <th><strong>PUNTOS</strong></th>
+       </tr> 
+
+       <tr>
+            <td name="posicion"> - </td>
+            <td name="nombre_tab"> - </td>
+            <td name="puntos_tab"> - </td>
+       </tr>
+
+       
+       <tr>
+            <td name="posicion"> - </td>
+            <td name="nombre_tab"> - </td>
+            <td name="puntos_tab"> - </td>
+       </tr>
+
+       
+       <tr>
+            <td name="posicion"> - </td>
+            <td name="nombre_tab"> - </td>
+            <td name="puntos_tab"> - </td>
+       </tr>
+
+        <tr>
+            <td name="posicion"> - </td>
+            <td name="nombre_tab"> - </td>
+            <td name="puntos_tab"> - </td>
+        </tr>
+
+        <tr>
+            <td name="posicion"> - </td>
+            <td name="nombre_tab"> - </td>
+            <td name="puntos_tab"> - </td>
+        </tr>
+
+        <tr>
+            <td name="posicion"> - </td>
+            <td name="nombre_tab"> - </td>
+            <td name="puntos_tab"> - </td>
+        </tr>
+
+        <tr>
+            <td name="posicion"> - </td>
+            <td name="nombre_tab"> - </td>
+            <td name="puntos_tab"> - </td>
+        </tr>
+
+        <tr>
+            <td name="posicion"> - </td>
+            <td name="nombre_tab"> - </td>
+            <td name="puntos_tab"> - </td>
+        </tr>
+
+        <tr>
+            <td name="posicion"> - </td>
+            <td name="nombre_tab"> - </td>
+            <td name="puntos_tab"> - </td>
+        </tr>
+
+        <tr>
+            <td name="posicion"> - </td>
+            <td name="nombre_tab"> - </td>
+            <td name="puntos_tab"> - </td>
+        </tr>
+    </table>
 </body>
 </html>

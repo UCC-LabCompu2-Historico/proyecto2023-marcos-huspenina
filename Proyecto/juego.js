@@ -32,8 +32,10 @@ let dialog;
 let dialog2;  
 var MostrarPuntaje; 
 var MostrarNivel; 
-var bandera = false; 
-
+var bandera = false;
+var nombre_tab = ["-","-","-","-","-","-","-","-","-","-"]; 
+var puntos_tab = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var nivel_tab = [9];
 
 
 //window.onload = Principal; 
@@ -53,6 +55,7 @@ function Principal(){
     document.addEventListener("keyup", CambioDireccion);
     document.addEventListener("keydown", PaginaEstatica);
     intervalo = setInterval(Juego, velocidad);
+    Cargar_Tabla(puntos);
 }
 
 let BorrarTexto = () =>{
@@ -257,6 +260,7 @@ let Restart = () => {
 let CerrarDialog = () =>{
     dialog = document.getElementById("MensajePerder");
     dialog.close(); 
+    Cargar_Tabla(puntos);
     Restart(); 
     Principal(); 
 }
@@ -264,4 +268,41 @@ let CerrarDialog = () =>{
 let MostrarDialog_2 = () =>{
     dialog2 = document.getElementById("nombre");
     dialog2.showModal();
+}
+
+let Cargar_Tabla = (puntos) =>{
+    console.log(puntos); 
+    for(i=0; i<10; i++){
+        if(puntos > puntos_tab[i]){
+            puntos_tab[9] = puntos;
+            break; 
+        }
+    }
+
+    for (i = 0; i < 10; i++){
+        for (j = 9; j >= i; j--) {
+          if (puntos_tab[j - 1] < puntos_tab[j]){
+            aux = puntos_tab[j - 1];
+            puntos_tab[j - 1] = puntos_tab[j];
+            puntos_tab[j] = aux;
+            }
+        }
+    }
+
+    for(i=0; i<10; i++){
+        if(puntos_tab[i]!=0){
+            if(localStorage.getItem("NombreDelUsuario")){
+                nombre_tab[i] = localStorage.getItem("NombreDelUsuario");
+            }
+        }
+    }
+
+    localStorage.setItem("Puntos_tab", JSON.stringify(puntos_tab));
+    localStorage.setItem("Nombres_tab", JSON.stringify(nombre_tab)); 
+
+    for(i=0; i<10; i++){
+        document.getElementsByName("posicion")[i].innerHTML = i+1; 
+        document.getElementsByName("nombre_tab")[i].innerHTML = nombre_tab[i];
+        document.getElementsByName("puntos_tab")[i].innerHTML = puntos_tab[i];
+    }
 }
