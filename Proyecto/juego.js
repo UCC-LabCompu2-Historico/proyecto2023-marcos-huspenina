@@ -68,7 +68,7 @@ let BorrarTexto = () =>{
  * Descripción: Guarda el nombre ingresado por el usuario. 
  * @method GuardarNombre
  */
- let GuardarNombre = () => {
+ let GuardarNombre = (letra) => {
     nombreUsu = document.getElementById("nombre_user").value;
     localStorage.setItem("NombreDelUsuario",nombreUsu);
   

@@ -17,9 +17,16 @@
     <a href="index.html">
         <button id="volver">Volver</button>
     </a>
-
-    <div class="SeleccionarColor">
-        <label>COLOR DE LA VIBORITA:</label>      
+    
+    <button id="volver" onclick="window.Custom_Dialog.showModal();">Custom</button>
+    <dialog id="Custom_Dialog">
+        <div class="SeleccionarColor">
+            <h2>CUSTOMIZA TU SNAKE!</h2>
+            <label for="nombre_user">NOMBRE DE USUARIO:</label>
+            <input type="text" id="nombre_user" placeholder=" Ingrese su nombre ">
+            <button id="guardar" onclick="GuardarNombre()">Guardar</button>
+            <br>
+            <label for="Color_Viborita">COLOR DE LA VIBORITA:</label>      
             <select id="seleccion">
                 <option value="1">1. VERDE</option>
                 <option value="2">2. ROJO</option>
@@ -27,7 +34,9 @@
                 <option value="4">4. AMARILLO</option>
                 <option value="5">5. ROSA</option>
             </select>
-    </div>
+        </div>
+        <button id="guardar" onclick="window.Custom_Dialog.close();">Cerrar</button>
+    </dialog>
 
     <h3>
         Puntuacion:
