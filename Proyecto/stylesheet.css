@@ -53,6 +53,13 @@ h4{
     height: 35px;
 }
 
+#nombre_user2{
+    font-size: 0.6em;
+    font-family: 'DynaPuff', cursive;
+    width: 200px;
+    height: 35px;
+}
+
 #guardar{
     text-decoration: none;
     font-weight: bold;
@@ -180,12 +187,25 @@ footer{
     font-family: 'DynaPuff', cursive;
 }
 
+#Titulo_Tabla{
+    margin-top: 20px;
+}
+
 .Tabla_Puntaje{
     margin: auto;
     font-size: 2em;
     font-weight: bolder;
     color: rgb(0, 0, 0);
     text-shadow:1px 3px rgb(255, 255, 255);
+    background-color: white;
+    border-radius: 10%;
+    border: 10px solid rgb(47, 78, 39);
+    padding: 20px 40px 20px;
+}
+
+.Espacio_Tabla{
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 

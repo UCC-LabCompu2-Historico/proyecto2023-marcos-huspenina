@@ -26,6 +26,8 @@ var contador2 = 0;
 let intervalo; 
 var nombre;
 var nombreUsu;
+var nombre2;
+var nombreUsu2;
 var Perder = false; 
 var mensaje;
 let dialog;
@@ -68,7 +70,7 @@ let BorrarTexto = () =>{
  * Descripción: Guarda el nombre ingresado por el usuario. 
  * @method GuardarNombre
  */
- let GuardarNombre = (letra) => {
+ let GuardarNombre = () => {
     nombreUsu = document.getElementById("nombre_user").value;
     localStorage.setItem("NombreDelUsuario",nombreUsu);
   
@@ -86,6 +88,24 @@ let BorrarTexto = () =>{
 
     window.location.href = "juego.html";
   };
+
+  let GuardarNombre2 = () => {
+    nombreUsu = document.getElementById("nombre_user2").value;
+    localStorage.setItem("NombreDelUsuario",nombreUsu);
+  
+    nombre = localStorage.getItem("NombreDelUsuario");
+  
+    if (nombre.trim() === "") {
+      alert("ADVERTENCIA: Debe ingresar su nombre de usuario");
+      return;
+    }
+  
+    if (nombre.length > 20) {
+      alert("ADVERTENCIA: Nombre de usuario muy extenso. Recuerde que tiene como máximo 20 caracteres");
+      return;
+    }
+  };
+
 
 
 let AumentoNivel = (puntos) =>{ 
@@ -290,7 +310,7 @@ let Cargar_Tabla = (puntos) =>{
     }
 
     for(i=0; i<10; i++){
-        if(puntos_tab[i]!=0){
+        if(puntos_tab[i]===puntos && puntos_tab[i]!=0){
             if(localStorage.getItem("NombreDelUsuario")){
                 nombre_tab[i] = localStorage.getItem("NombreDelUsuario");
             }
