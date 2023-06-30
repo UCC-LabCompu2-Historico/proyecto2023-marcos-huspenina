@@ -187,6 +187,10 @@ footer{
     font-family: 'DynaPuff', cursive;
 }
 
+#tablero{
+    border: 25px solid rgb(255, 255, 255);
+}
+
 #Titulo_Tabla{
     margin-top: 20px;
 }

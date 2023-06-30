@@ -22,25 +22,26 @@ var comidaY;
 var puntos = 0; 
 var nivel = 1; 
 var contador = 0; 
-var contador2 = 0; 
+var contador2 = 0;
 let intervalo; 
 var nombre;
 var nombreUsu;
 var nombre2;
 var nombreUsu2;
-var Perder = false; 
+var Perder = false;
+var auxP; 
+var auxN; 
 var mensaje;
 let dialog;
 let dialog2;  
 var MostrarPuntaje; 
 var MostrarNivel; 
+var InputNombre; 
 var bandera = false;
+banderaNombre = true;
 var nombre_tab = ["-","-","-","-","-","-","-","-","-","-"]; 
 var puntos_tab = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var nivel_tab = [9];
 
-
-//window.onload = Principal; 
 
  /**
  * Descripción: Crea el canvas y utiliza las demas funciones para llevar a cabo el juego.  
@@ -223,6 +224,20 @@ let GenerarComida = () =>{
 * @param {KeyboardEvent} tecla - flecha presionada por el usuario.
  */
 let CambioDireccion = (tecla) =>{
+    InputNombre = document.getElementById("nombre_user2");
+
+    InputNombre.addEventListener("focus", () => {
+        banderaNombre = false; 
+      });
+      
+    InputNombre.addEventListener("blur", () => {
+        banderaNombre = true; 
+      });
+    
+    if(!banderaNombre){
+        return; 
+    }
+      
     if ((tecla.code == "ArrowUp" || tecla.code == "KeyW") && velocidadY != 1) {
         velocidadX = 0;
         velocidadY = -1;
@@ -295,6 +310,7 @@ let Cargar_Tabla = (puntos) =>{
     for(i=0; i<10; i++){
         if(puntos > puntos_tab[i]){
             puntos_tab[9] = puntos;
+            nombre_tab[9] = nombre; 
             break; 
         }
     }
@@ -302,17 +318,13 @@ let Cargar_Tabla = (puntos) =>{
     for (i = 0; i < 10; i++){
         for (j = 9; j >= i; j--) {
           if (puntos_tab[j - 1] < puntos_tab[j]){
-            aux = puntos_tab[j - 1];
+            auxP = puntos_tab[j - 1];
             puntos_tab[j - 1] = puntos_tab[j];
-            puntos_tab[j] = aux;
-            }
-        }
-    }
+            puntos_tab[j] = auxP;
 
-    for(i=0; i<10; i++){
-        if(puntos_tab[i]===puntos && puntos_tab[i]!=0){
-            if(localStorage.getItem("NombreDelUsuario")){
-                nombre_tab[i] = localStorage.getItem("NombreDelUsuario");
+            auxN = nombre_tab[j - 1];
+            nombre_tab[j - 1] = nombre_tab[j];
+            nombre_tab[j] = auxN;
             }
         }
     }
