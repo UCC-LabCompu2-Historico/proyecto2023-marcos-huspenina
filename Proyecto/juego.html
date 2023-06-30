@@ -25,14 +25,33 @@
                 <label for="nombre_user">NOMBRE DE USUARIO:</label>
                 <input type="text" id="nombre_userCustom" placeholder=" Ingrese su nombre " maxlength="10">
                 <button id="guardar" onclick="GuardarNombreCustom()">Guardar</button>
+                
             <br>
             <label for="Color_Viborita">COLOR DE LA VIBORITA:</label>      
-            <select id="seleccion">
+            <select id="seleccion_Col">
                 <option value="1">1. VERDE</option>
-                <option value="2">2. ROJO</option>
+                <option value="2">2. NARANJA</option>
                 <option value="3">3. AZUL</option>
                 <option value="4">4. AMARILLO</option>
                 <option value="5">5. ROSA</option>
+            </select>
+
+            <br>
+            <label for="Color_Comida">COLOR DE LA COMIDA:</label>
+            <select id="seleccion_Com">
+                <option value="1">1. ROJO</option>
+                <option value="2">2. VIOLETA</option>
+                <option value="3">3. BLANCO</option>
+                <option value="4">4. MARRON</option>
+                <option value="5">5. NEGRO</option>
+            </select>
+
+            <br>
+            <label for="Tamanio_Mapa">TAMAÑO DEL TABLERO:</label>      
+            <select id="seleccion_Tab" onclick="Restart(), Principal()">
+                <option value="1">1. NORMAL</option>
+                <option value="2">2. CHICO</option>
+                <option value="3">3. GRANDE</option>
             </select>
         </div>
         <button id="guardar" onclick="window.Custom_Dialog.close();">Cerrar</button>

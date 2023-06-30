@@ -1,7 +1,7 @@
 //tablero 
 var bloque = 25;
-var filas = 20; 
-var columnas = 40; 
+var filas; 
+var columnas; 
 var tablero; 
 var ctx; 
 
@@ -12,7 +12,7 @@ var velocidadX = 0;
 var velocidadY = 0;
 var velocidad = 100; 
 var cuerpo = []; 
-var seleccion; 
+
 
 //comida
 var comidaX;  
@@ -25,6 +25,9 @@ var contador = 0;
 let intervalo; 
 var nombre;
 var nombreUsu;
+var seleccion_Col;
+var seleccion_Tab;
+var seleccion_Com; 
 var Perder = false;
 var auxP; 
 var auxN; 
@@ -37,16 +40,19 @@ var banderaNombre = true;
 var nombre_tab = ["-","-","-","-","-","-","-","-","-","-"]; 
 var puntos_tab = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
+
+
 /**
 * Descripción: Crea el canvas y utiliza las demas funciones para llevar a cabo el juego.  
 * @method Principal
 */
 let Principal = () =>{
     //creando el tablero
+    CustomTablero(); 
     tablero = document.getElementById("tablero"); 
     tablero.height = filas * bloque; 
     tablero.width = columnas * bloque; 
-    ctx =  tablero.getContext("2d"); 
+    ctx =  tablero.getContext("2d");
  
     GenerarComida(); 
     document.addEventListener("keyup", CambioDireccion);
@@ -73,7 +79,7 @@ let GuardarNombre = () => {
     }
 
     window.location.href = "juego.html";
-};
+}
 
 
 /**
@@ -91,7 +97,7 @@ let GuardarNombreCustom = () => {
       alert("ADVERTENCIA: Debe ingresar su nombre de usuario");
       return;
     }
-};
+}
 
 
 /**
@@ -115,13 +121,13 @@ let AumentoNivel = (puntos) =>{
 * @method CustomViborita
 */
 let CustomViborita = () => {
-    seleccion = document.getElementById("seleccion").value;
-    switch (seleccion) {
+    seleccion_Col = document.getElementById("seleccion_Col").value;
+    switch (seleccion_Col) {
       case "1":
         ctx.fillStyle = "green";
         break;
       case "2":
-        ctx.fillStyle = "red";
+        ctx.fillStyle = "orange";
         break;
       case "3":
         ctx.fillStyle = "blue";
@@ -139,6 +145,60 @@ let CustomViborita = () => {
 }
 
 /**
+* Descripción: Permite elegir el color de la viborita. 
+* @method CustomTablero
+*/
+let CustomTablero = () => {
+    seleccion_Tab = document.getElementById("seleccion_Tab").value;
+    switch (seleccion_Tab) {
+      case "1":
+        filas = 20;
+        columnas = 40;
+        break;
+      case "2":
+        filas = 15;
+        columnas = 25;
+        break;
+      case "3":
+        filas = 20;
+        columnas = 50;
+        break;
+      default:
+        filas = 20;
+        columnas = 40;
+        break;
+    }
+}
+
+/**
+* Descripción: Permite elegir el color de la comida. 
+* @method CustomComida
+*/
+let CustomComida = () => {
+    seleccion_Com = document.getElementById("seleccion_Com").value;
+    switch (seleccion_Com){
+        case "1":
+          ctx.fillStyle = "red";
+          break;
+        case "2":
+          ctx.fillStyle = "purple";
+          break;
+        case "3":
+          ctx.fillStyle = "white";
+          break;
+        case "4":
+          ctx.fillStyle = "brown";
+          break;
+        case "5":
+          ctx.fillStyle = "black";
+          break;
+        default:
+          ctx.fillStyle = "red";
+          break;
+    }
+}
+
+/**
 * Descripción: Realiza lo esencial del juego, creacion de la viborita, comida, condiciones de puntaje, finalizacion del mismo, etc.  
 * @method Juego
 */
@@ -151,7 +211,7 @@ let Juego = () =>{
     //estilo tablero y comida
     ctx.fillStyle = "black"; 
     ctx.fillRect(0, 0, tablero.width, tablero.height); 
-    ctx.fillStyle = "red"; 
+    CustomComida();  
     ctx.fillRect(comidaX, comidaY, bloque, bloque);
 
     //verificacion de comida
