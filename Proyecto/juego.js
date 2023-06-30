@@ -22,32 +22,26 @@ var comidaY;
 var puntos = 0; 
 var nivel = 1; 
 var contador = 0; 
-var contador2 = 0;
 let intervalo; 
 var nombre;
 var nombreUsu;
-var nombre2;
-var nombreUsu2;
 var Perder = false;
 var auxP; 
 var auxN; 
 var mensaje;
 let dialog;
 let dialog2;  
-var MostrarPuntaje; 
-var MostrarNivel; 
 var InputNombre; 
 var bandera = false;
-banderaNombre = true;
+var banderaNombre = true;
 var nombre_tab = ["-","-","-","-","-","-","-","-","-","-"]; 
 var puntos_tab = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-
- /**
- * Descripción: Crea el canvas y utiliza las demas funciones para llevar a cabo el juego.  
- * @method Principal
- */
-function Principal(){
+/**
+* Descripción: Crea el canvas y utiliza las demas funciones para llevar a cabo el juego.  
+* @method Principal
+*/
+let Principal = () =>{
     //creando el tablero
     tablero = document.getElementById("tablero"); 
     tablero.height = filas * bloque; 
@@ -61,54 +55,50 @@ function Principal(){
     Cargar_Tabla(puntos);
 }
 
-let BorrarTexto = () =>{
-    mensaje = document.getElementById("mensaje"); 
-    mensaje.innerText = "";  
-}
 
-
- /**
- * Descripción: Guarda el nombre ingresado por el usuario. 
- * @method GuardarNombre
- */
- let GuardarNombre = () => {
+/**
+* Descripción: Guarda el nombre ingresado por el usuario. 
+* @method GuardarNombre
+*/
+let GuardarNombre = () => {
     nombreUsu = document.getElementById("nombre_user").value;
     localStorage.setItem("NombreDelUsuario",nombreUsu);
   
     nombre = localStorage.getItem("NombreDelUsuario");
-  
-    if (nombre.trim() === "") {
+
+    //verifica que el usuario ingrese el nombre
+    if (nombre.trim() === ""){
       alert("ADVERTENCIA: Debe ingresar su nombre de usuario");
-      return;
-    }
-  
-    if (nombre.length > 20) {
-      alert("ADVERTENCIA: Nombre de usuario muy extenso. Recuerde que tiene como máximo 20 caracteres");
       return;
     }
 
     window.location.href = "juego.html";
-  };
+};
 
-  let GuardarNombre2 = () => {
-    nombreUsu = document.getElementById("nombre_user2").value;
+
+/**
+* Descripción: Guarda el nombre ingresado por el usuario en la parte de Custom.  
+* @method GuardarNombreCustom
+*/
+let GuardarNombreCustom = () => {
+    nombreUsu = document.getElementById("nombre_userCustom").value;
     localStorage.setItem("NombreDelUsuario",nombreUsu);
   
     nombre = localStorage.getItem("NombreDelUsuario");
-  
-    if (nombre.trim() === "") {
+    
+    //verifica que el usuario ingrese el nombre
+    if (nombre.trim() === ""){
       alert("ADVERTENCIA: Debe ingresar su nombre de usuario");
       return;
     }
-  
-    if (nombre.length > 20) {
-      alert("ADVERTENCIA: Nombre de usuario muy extenso. Recuerde que tiene como máximo 20 caracteres");
-      return;
-    }
-  };
+};
 
 
-
+/**
+* Descripción: Aumenta el nivel del juego segun los puntos del usuario.  
+* @method AumentoNivel
+* @param {number} puntos - El valor de los puntos hechos por el usuario.
+*/
 let AumentoNivel = (puntos) =>{ 
     document.getElementById("nivel").textContent = nivel;
     if(puntos === contador+3){
@@ -118,9 +108,12 @@ let AumentoNivel = (puntos) =>{
         clearInterval(intervalo); 
         intervalo = setInterval(Juego, velocidad); 
    }
-
 }
 
+/**
+* Descripción: Permite elegir el color de la viborita. 
+* @method CustomViborita
+*/
 let CustomViborita = () => {
     seleccion = document.getElementById("seleccion").value;
     switch (seleccion) {
@@ -143,12 +136,12 @@ let CustomViborita = () => {
         ctx.fillStyle = "green";
         break;
     }
-  }
+}
 
- /**
- * Descripción: Realiza lo esencial del juego, creacion de la viborita, comida, condiciones de puntaje, finalizacion del mismo, etc.  
- * @method Juego
- */
+/**
+* Descripción: Realiza lo esencial del juego, creacion de la viborita, comida, condiciones de puntaje, finalizacion del mismo, etc.  
+* @method Juego
+*/
 let Juego = () =>{
 
     if(Perder){
@@ -167,7 +160,6 @@ let Juego = () =>{
         puntos++; 
         GenerarComida();
     }
-
 
     //puntos
     document.getElementById("puntos").textContent = puntos;
@@ -207,32 +199,32 @@ let Juego = () =>{
 }
 
 
-
- /**
- * Descripción: Genera las coordenadas de la comida de manera aleatoria 
- * @method GenerarComida
- */
+/**
+* Descripción: Genera las coordenadas de la comida de manera aleatoria. 
+* @method GenerarComida
+*/
 let GenerarComida = () =>{
     comidaX = Math.floor(Math.random() * columnas) * bloque; 
     comidaY = Math.floor(Math.random() * filas) * bloque; 
 }
 
 
- /**
- * Descripción: Realiza el cambio de direccion de la viborita cuando el usuario presiona una flecha del teclado. 
- * @method CambioDireccion
+/**
+* Descripción: Realiza el cambio de direccion de la viborita cuando el usuario presiona una flecha del teclado. 
+* @method CambioDireccion
 * @param {KeyboardEvent} tecla - flecha presionada por el usuario.
- */
+*/
 let CambioDireccion = (tecla) =>{
-    InputNombre = document.getElementById("nombre_user2");
+    InputNombre = document.getElementById("nombre_userCustom");
 
+    //verifica si el usuario esta seleccionado el campo de ingresar nombre
     InputNombre.addEventListener("focus", () => {
         banderaNombre = false; 
-      });
-      
+    });
+
     InputNombre.addEventListener("blur", () => {
         banderaNombre = true; 
-      });
+    });
     
     if(!banderaNombre){
         return; 
@@ -257,17 +249,21 @@ let CambioDireccion = (tecla) =>{
 }
 
 
- /**
- * Descripción: Hace que la pagina no se mueva cuando el usuario presiona una tecla.  
- * @method PaginaEstatica
- * @param {KeyboardEvent} evento - tecla presionada por el usuario
- */
+/**
+* Descripción: Hace que la pagina no se mueva cuando el usuario presiona una tecla.  
+* @method PaginaEstatica
+* @param {KeyboardEvent} evento - tecla presionada por el usuario
+*/
 let PaginaEstatica = (evento) =>{
-        if (evento.key.startsWith("Arrow")){
-            evento.preventDefault();
-        }
+    if (evento.key.startsWith("Arrow")){
+        evento.preventDefault();
+    }
 }
 
+/**
+* Descripción: Genera un cartel cuando has perdido mostrando el nombre, los puntos y el nivel.
+* @method MostrarDialog
+*/
 let MostrarDialog = () =>{
     nombre = localStorage.getItem("NombreDelUsuario");
     dialog = document.getElementById("MensajePerder");
@@ -277,6 +273,19 @@ let MostrarDialog = () =>{
     dialog.showModal();
 }
 
+/**
+* Descripción: Genera un cartel cuando el usuario quiere empezar a jugar. 
+* @method MostrarDialog_2 
+*/
+let MostrarDialog_2 = () =>{
+    dialog2 = document.getElementById("nombre");
+    dialog2.showModal();
+}
+
+/**
+* Descripción: Reinicia las variables para que el usuario juegue nuevamente.
+* @method Restart
+*/
 let Restart = () => {
     cabezaX = bloque * 10;
     cabezaY = bloque * 10;
@@ -284,14 +293,17 @@ let Restart = () => {
     velocidadY = 0;
     puntos = 0;
     contador = 0;
-    contador2 = 0;
     Perder = false;
     cuerpo = []; 
     clearInterval(intervalo);
     velocidad = 100;
     nivel = 1;
-};
+}
 
+/**
+* Descripción: Cierra el cartel de perder y reinicia el juego.
+* @method CerrarDialog
+*/
 let CerrarDialog = () =>{
     dialog = document.getElementById("MensajePerder");
     dialog.close(); 
@@ -300,13 +312,13 @@ let CerrarDialog = () =>{
     Principal(); 
 }
 
-let MostrarDialog_2 = () =>{
-    dialog2 = document.getElementById("nombre");
-    dialog2.showModal();
-}
 
+/**
+* Descripción: Actualiza la tabla de los 10 mejores puntajes.  
+* @method Cargar_Tabla
+* @param {number} puntos - El valor de los puntos hechos por el usuario.
+*/
 let Cargar_Tabla = (puntos) =>{
-    console.log(puntos); 
     for(i=0; i<10; i++){
         if(puntos > puntos_tab[i]){
             puntos_tab[9] = puntos;
@@ -318,13 +330,13 @@ let Cargar_Tabla = (puntos) =>{
     for (i = 0; i < 10; i++){
         for (j = 9; j >= i; j--) {
           if (puntos_tab[j - 1] < puntos_tab[j]){
-            auxP = puntos_tab[j - 1];
-            puntos_tab[j - 1] = puntos_tab[j];
-            puntos_tab[j] = auxP;
+                auxP = puntos_tab[j - 1];
+                puntos_tab[j - 1] = puntos_tab[j];
+                puntos_tab[j] = auxP;
 
-            auxN = nombre_tab[j - 1];
-            nombre_tab[j - 1] = nombre_tab[j];
-            nombre_tab[j] = auxN;
+                auxN = nombre_tab[j - 1];
+                nombre_tab[j - 1] = nombre_tab[j];
+                nombre_tab[j] = auxN;
             }
         }
     }

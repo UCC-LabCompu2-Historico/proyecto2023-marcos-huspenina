@@ -23,8 +23,8 @@
         <div class="SeleccionarColor">
             <h2>CUSTOMIZA TU SNAKE!</h2>
                 <label for="nombre_user">NOMBRE DE USUARIO:</label>
-                <input type="text" id="nombre_user2" placeholder=" Ingrese su nombre ">
-                <button id="guardar" onclick="GuardarNombre2()">Guardar</button>
+                <input type="text" id="nombre_userCustom" placeholder=" Ingrese su nombre " maxlength="10">
+                <button id="guardar" onclick="GuardarNombreCustom()">Guardar</button>
             <br>
             <label for="Color_Viborita">COLOR DE LA VIBORITA:</label>      
             <select id="seleccion">
@@ -59,7 +59,6 @@
     </div>
 
     <canvas id="tablero"></canvas>
-
 
     <table class="Tabla_Puntaje">
         <caption id="Titulo_Tabla">

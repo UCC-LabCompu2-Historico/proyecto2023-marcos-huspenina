@@ -53,7 +53,7 @@ h4{
     height: 35px;
 }
 
-#nombre_user2{
+#nombre_userCustom{
     font-size: 0.6em;
     font-family: 'DynaPuff', cursive;
     width: 200px;
@@ -105,14 +105,14 @@ h4{
     margin-bottom: 70px;
 }
 
-#reglas:hover {
+#reglas:hover{
     transform: scale(1.1);
     color: rgb(255, 255, 255);
     background-color: rgb(30, 32, 131);
 }
 
 #lista{
-text-align: left;
+    text-align: left;
 }
 
 footer{
@@ -151,7 +151,7 @@ footer{
 
 #volver:hover {
     transform: scale(1.1);
-  }
+}
 
 .espacio{
     margin-left: 150px;
