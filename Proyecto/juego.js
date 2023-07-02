@@ -13,7 +13,6 @@ var velocidadY = 0;
 var velocidad = 100; 
 var cuerpo = []; 
 
-
 //comida
 var comidaX;  
 var comidaY;
@@ -37,10 +36,8 @@ let dialog2;
 var InputNombre; 
 var bandera = false;
 var banderaNombre = true;
-var nombre_tab = ["-","-","-","-","-","-","-","-","-","-"]; 
-var puntos_tab = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-
+var nombre_tab = JSON.parse(localStorage.getItem("Nombres_tab")) || ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"];
+var puntos_tab = JSON.parse(localStorage.getItem("Puntos_tab")) || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 /**
 * Descripción: Crea el canvas y utiliza las demas funciones para llevar a cabo el juego.  
@@ -116,6 +113,7 @@ let AumentoNivel = (puntos) =>{
    }
 }
 
+
 /**
 * Descripción: Permite elegir el color de la viborita. 
 * @method CustomViborita
@@ -144,6 +142,7 @@ let CustomViborita = () => {
     }
 }
 
+
 /**
 * Descripción: Permite elegir el color de la viborita. 
 * @method CustomTablero
@@ -169,6 +168,7 @@ let CustomTablero = () => {
         break;
     }
 }
+
 
 /**
 * Descripción: Permite elegir el color de la comida. 
@@ -197,6 +197,7 @@ let CustomComida = () => {
           break;
     }
 }
+
 
 /**
 * Descripción: Realiza lo esencial del juego, creacion de la viborita, comida, condiciones de puntaje, finalizacion del mismo, etc.  
@@ -320,6 +321,7 @@ let PaginaEstatica = (evento) =>{
     }
 }
 
+
 /**
 * Descripción: Genera un cartel cuando has perdido mostrando el nombre, los puntos y el nivel.
 * @method MostrarDialog
@@ -333,6 +335,7 @@ let MostrarDialog = () =>{
     dialog.showModal();
 }
 
+
 /**
 * Descripción: Genera un cartel cuando el usuario quiere empezar a jugar. 
 * @method MostrarDialog_2 
@@ -341,6 +344,7 @@ let MostrarDialog_2 = () =>{
     dialog2 = document.getElementById("nombre");
     dialog2.showModal();
 }
+
 
 /**
 * Descripción: Reinicia las variables para que el usuario juegue nuevamente.
@@ -359,6 +363,7 @@ let Restart = () => {
     velocidad = 100;
     nivel = 1;
 }
+
 
 /**
 * Descripción: Cierra el cartel de perder y reinicia el juego.
@@ -379,6 +384,7 @@ let CerrarDialog = () =>{
 * @param {number} puntos - El valor de los puntos hechos por el usuario.
 */
 let Cargar_Tabla = (puntos) =>{
+
     for(i=0; i<10; i++){
         if(puntos > puntos_tab[i]){
             puntos_tab[9] = puntos;
