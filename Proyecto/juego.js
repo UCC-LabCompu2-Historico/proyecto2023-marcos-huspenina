@@ -65,15 +65,15 @@ let Principal = () =>{
 */
 let GuardarNombre = () => {
     nombreUsu = document.getElementById("nombre_user").value;
-    localStorage.setItem("NombreDelUsuario",nombreUsu);
-  
-    nombre = localStorage.getItem("NombreDelUsuario");
 
     //verifica que el usuario ingrese el nombre
-    if (nombre.trim() === ""){
+    if (nombreUsu.trim() === ""){
       alert("ADVERTENCIA: Debe ingresar su nombre de usuario");
       return;
     }
+
+    localStorage.setItem("NombreDelUsuario",nombreUsu);
+    nombre = localStorage.getItem("NombreDelUsuario");
 
     window.location.href = "juego.html";
 }
@@ -85,15 +85,15 @@ let GuardarNombre = () => {
 */
 let GuardarNombreCustom = () => {
     nombreUsu = document.getElementById("nombre_userCustom").value;
-    localStorage.setItem("NombreDelUsuario",nombreUsu);
-  
-    nombre = localStorage.getItem("NombreDelUsuario");
-    
+
     //verifica que el usuario ingrese el nombre
-    if (nombre.trim() === ""){
+    if (nombreUsu.trim() === ""){
       alert("ADVERTENCIA: Debe ingresar su nombre de usuario");
       return;
     }
+
+    localStorage.setItem("NombreDelUsuario",nombreUsu);
+    nombre = localStorage.getItem("NombreDelUsuario");
 }
 
 
