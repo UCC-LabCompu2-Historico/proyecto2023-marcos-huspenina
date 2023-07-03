@@ -12,4 +12,4 @@ La página consiste en una ventana inicial donde tenes las opciones de jugar o d
 
 ## Autores :fountain_pen:
 - Joaquin Marcos Vergara
-- Tomas Huspenina
+- Tomás Huspenina
